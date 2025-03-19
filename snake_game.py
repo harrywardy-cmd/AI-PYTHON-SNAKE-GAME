@@ -28,9 +28,16 @@ class Snake:
             self.direction = new_direction
 
     
-    def snake_grow():
+    def snake_grow(self):
+        self.grow = True
     
-    def check_collsion(self):
+    def check_collision(self):
+        head_x, head_y = self.body[0]
+        if head_x < 0 or head_x >= WIDTH or head_y < 0 or head_y >= HEIGHT:
+            return True
+        if len(self.body) > 1 and (head_x, head_y) in self.body[1:]:
+            return True
+        return False
 
 
 class food(self):
