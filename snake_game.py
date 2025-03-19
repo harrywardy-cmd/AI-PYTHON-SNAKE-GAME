@@ -22,13 +22,13 @@ class Snake:
         
         self.body.insert(0, new_head)
     
-    def chance_direction(self, new_direction):
+    def change_direction(self, new_direction):
         opposite = (-self.direction[0], -self.direction[1])
         if new_direction != opposite:
             self.direction = new_direction
 
     
-    def snake_grow(self):
+    def grow_snake(self):
         self.grow = True
     
     def check_collision(self):
