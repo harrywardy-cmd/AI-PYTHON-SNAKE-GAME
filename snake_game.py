@@ -40,7 +40,7 @@ class Snake:
         return False
 
 
-class food(self):
+class Food:
     def __init__(self):
         self.position = self.random_position()
 
@@ -51,7 +51,17 @@ class food(self):
         self.position = self.random_position()
 
 def main():
+    pygame.init()
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    clock = pygame.time.Clock()
+    snake = Snake()
+    food = Food()
+    running = True
 
+    while running:
+        screen.fill(BLACK)
+
+    pygame.quit()
 
 if __name__ == "__main__":
     main()
