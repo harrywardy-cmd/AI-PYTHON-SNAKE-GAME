@@ -57,28 +57,40 @@ def main():
     snake = Snake()
     food = Food()
     running = True
-
+    
     while running:
         screen.fill(BLACK)
-
-    snake.move()
-
-    if snake.body[0] == food.position:
-        snake.snake_grow()
-        food.spawn_new()
-
-    if snake.check_collision:
-        running = False
-
-    pygame.draw.rect(screen, RED, (*food.position, GRID_SIZE, GRID_SIZE))
-    for segment in snake.body:
-        pygame.draw.rect(screen, GREEN, (*segment, GRID_SIZE, GRID_SIZE))
         
-    pygame.display.flip()
-    clock.tick(10)
-    pygame.quit()
-
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    snake.change_direction((0, -GRID_SIZE))
+                elif event.key == pygame.K_DOWN:
+                    snake.change_direction((0, GRID_SIZE))
+                elif event.key == pygame.K_LEFT:
+                    snake.change_direction((-GRID_SIZE, 0))
+                elif event.key == pygame.K_RIGHT:
+                    snake.change_direction((GRID_SIZE, 0))
+        
+        snake.move()
+        
+        if snake.body[0] == food.position:
+            snake.grow_snake()
+            food.spawn_new()
+        
+        if snake.check_collision():
+            running = False
+        
+        pygame.draw.rect(screen, RED, (*food.position, GRID_SIZE, GRID_SIZE))
+        for segment in snake.body:
+            pygame.draw.rect(screen, GREEN, (*segment, GRID_SIZE, GRID_SIZE))
+        
+        pygame.display.flip()
+        clock.tick(10)
     
+    pygame.quit()
 
 if __name__ == "__main__":
     main()
