@@ -61,7 +61,24 @@ def main():
     while running:
         screen.fill(BLACK)
 
+    snake.move()
+
+    if snake.body[0] == food.position:
+        snake.snake_grow()
+        food.spawn_new()
+
+    if snake.check_collision:
+        running = False
+
+    pygame.draw.rect(screen, RED, (*food.position, GRID_SIZE, GRID_SIZE))
+    for segment in snake.body:
+        pygame.draw.rect(screen, GREEN, (*segment, GRID_SIZE, GRID_SIZE))
+        
+    pygame.display.flip()
+    clock.tick(10)
     pygame.quit()
+
+    
 
 if __name__ == "__main__":
     main()
