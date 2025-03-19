@@ -41,7 +41,14 @@ class Snake:
 
 
 class food(self):
+    def __init__(self):
+        self.position = self.random_position()
 
+    def random_position(self):
+         return (random.randint(0, (WIDTH - GRID_SIZE) // GRID_SIZE) * GRID_SIZE,random.randint(0, (HEIGHT - GRID_SIZE) // GRID_SIZE) * GRID_SIZE)
+
+    def spawn_new(self):
+        self.position = self.random_position()
 
 def main():
 
