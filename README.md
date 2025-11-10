@@ -104,7 +104,7 @@ This modular design ensures readability, scalability, and adherence to Python be
 Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/AI-PYTHON-SNAKE-GAME.git
+git clone https://github.com/harrywardy-cmd/AI-PYTHON-SNAKE-GAME.git
 cd AI-PYTHON-SNAKE-GAME
 ```
 
